@@ -1,8 +1,6 @@
-import { createSlice, createAsyncThunk, isRejectedWithValue } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
-import type { CartState, CartItem, AddCartItemData, EditCartItemData } from "../../types";
+import { createSlice, createAsyncThunk} from "@reduxjs/toolkit";
+import type { CartState, AddCartItemData, EditCartItemData } from "../../types";
 import { cartAPI } from "../../services/cartAPI";
-import { clearError } from "../auth/authSlice";
 
 const initialState: CartState={
     items: [],
@@ -20,7 +18,7 @@ export const fetchCartItems = createAsyncThunk(
             return rejectWithValue(error.message);
         }
     }
-)
+);
 
 export const addCartItem = createAsyncThunk(
     'cart/addItem',
@@ -97,9 +95,41 @@ const cartSlice = createSlice({
             state.isLoading = false;
             state.error = action.payload as string;
          })
-         //==== Continue from update Item case
+         .addCase(updateCartItem.pending,(state)=>{
+            state.isLoading = true;
+            state.error = null;
+         })
+         .addCase(updateCartItem.fulfilled,(state, action)=>{
+            state.isLoading = false;
+            const index = state.items.findIndex(item => item.id === action.payload.id);
+            if(index !== -1){
+                state.items[index] = action.payload;
+            }
+            state.error = null;
+         })
+         .addCase(updateCartItem.rejected, (state, action)=>{
+            state.isLoading = false;
+            state.error = action.payload as string;
+         })
+         .addCase(deleteCartItem.pending, (state)=>{
+            state.isLoading = true;
+            state.error = null;
+         })
+         .addCase(deleteCartItem.fulfilled, (state, action)=>{
+            state.isLoading = false;
+            state.items = state.items.filter(item =>item.id !== action.payload);
+            state.error = null;
+         })
+         .addCase(deleteCartItem.rejected, (state, action)=>{
+            state.isLoading = false;
+            state.error = action.payload as string;
+         });
+         
      },
-})
+});
+
+export const { clearError, clearCart} = cartSlice.actions;
+export default cartSlice.reducer;
 
 
 
