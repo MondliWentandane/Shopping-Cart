@@ -51,6 +51,18 @@ export const fetchUserProfile = createAsyncThunk(
     }
 );
 
+export const updateProfile = createAsyncThunk(
+    'auth/updateProfile',
+    async({ userId, userData }: { userId: number; userData: any }, { rejectWithValue }) => {
+        try {
+            const response = await authAPI.updateProfile(userId, userData);
+            return response;
+        } catch (error: any) {
+            return rejectWithValue(error.message);
+        }
+    }
+);
+
 const authSlice = createSlice({
     name: 'auth',
     initialState: getInitialState(),
@@ -113,12 +125,22 @@ const authSlice = createSlice({
         .addCase(fetchUserProfile.rejected, (state, action)=>{
             state.isLoading = false;
             state.error = action.payload as string;
+        })
+        .addCase(updateProfile.pending, (state) => {
+            state.isLoading = true;
+            state.error = null;
+        })
+        .addCase(updateProfile.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.user = action.payload;
+            localStorage.setItem('user', JSON.stringify(action.payload));
+        })
+        .addCase(updateProfile.rejected, (state, action) => {
+            state.isLoading = false;
+            state.error = action.payload as string;
         });
     },
 });
 
 export const {clearError, logout, setLoading } = authSlice.actions;
 export default authSlice.reducer;
-
-
-
