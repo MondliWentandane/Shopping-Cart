@@ -1,6 +1,7 @@
 # React + TypeScript + Vite
 
 ======= Running the Application =========
+
 Start JSON Server: npm run json-server
 
 Start Development Server: npm run dev
