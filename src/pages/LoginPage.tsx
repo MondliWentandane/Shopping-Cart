@@ -31,9 +31,18 @@ const LoginPage:React.FC =()=>{
     };
 
     return(
-        <div style={div1Sty}>
-            <div style={div2Sty}>
-                <h2 style={{ textAlign: 'center', marginBottom: '2rem', color: '#333' }}>Login to Your Account</h2>
+        <div id="div1Sty">
+            <div id="introDiv">
+                <h1>Customer-Focused</h1>
+                <h3>We make shopping simple and enjoyable</h3> <br />
+                <p>browse, add to your cart, and enjoy a <strong>seamless checkout experience....</strong> ,
+                    shop better — your <strong>personal</strong> cart
+                    tracker for everything you need. <strong>“No more guesswork"</strong> — add items, set prices, and watch your 
+                    total update instantly!”</p>
+
+            </div>
+            <div id="theForm">
+                <h2 style={{ textAlign: 'center', marginBottom: '2rem', color: '#ffffffff' }}>Login to Your Account</h2>
                 {error && (
                     <div style={{backgroundColor: '#fee',color: '#c33',padding: '0.75rem',borderRadius: '4px',
                           marginBottom: '1rem',border: '1px solid #fcc',}}> 
@@ -43,25 +52,22 @@ const LoginPage:React.FC =()=>{
 
                 <form onSubmit={handleSubmit}>
                     <div style={{ marginBottom: '1rem' }}>
-                        <label style={labelSty}>Email Address</label>
-                        <input type="email" value={email} onChange={(e)=> setEmail(e.target.value)} style={inputSty} required/>
+                        <label id="lbl">Email Address</label>
+                        <input id="inputs" type="email" value={email} onChange={(e)=> setEmail(e.target.value)} required/>
                     </div>
                     <div style={{ marginBottom: '1.5rem' }}>
-                        <label style={labelSty}>Password</label>
-                        <input type="password" value={password} onChange={(e)=> setPassword(e.target.value)} style={inputSty} required/>
+                        <label id="lbl">Password</label>
+                        <input id="inputs" type="password" value={password} onChange={(e)=> setPassword(e.target.value)} required/>
                     </div>
-                    <button type="submit" disabled={isLoading}
-                    style={{width: '100%',padding: '0.75rem',backgroundColor: isLoading ? '#ccc' : '#3498db',
-                    color: 'white',border: 'none',borderRadius: '4px',fontSize: '1rem',cursor: isLoading ? 'not-allowed' : 'pointer',
-                    marginBottom: '1rem',}}>
+                    <button type="submit" disabled={isLoading} id="btn">
                         {isLoading? 'Logging in...' : 'Login'}
                     </button>
                 </form>
 
                 {isLoading && <LoadingSpinner size="small" />}
-                <p style={{textAlign: 'center', color: '#666'}}>
+                <p style={{textAlign: 'center', color: '#ffffffff'}}>
                     Don't have an account?{' '}
-                    <Link to="/register" style={{ color: '#3498db', textDecoration: 'none' }}>Register here</Link>
+                    <Link to="/register" style={{ color: '#11259bff', textDecoration: 'none' }}>Register here</Link>
                 </p>
             </div>
         </div>
@@ -71,31 +77,4 @@ const LoginPage:React.FC =()=>{
 
 export default LoginPage;
 
-const div1Sty:React.CSSProperties={
-    minHeight: '100vh',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#f5f5f5',
-}
-const div2Sty:React.CSSProperties={
-        backgroundColor: 'white',
-        padding: '2rem',
-        borderRadius: '8px',
-        boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
-        width: '100%',
-        maxWidth: '400px',
-}
-const labelSty:React.CSSProperties={
-    display: 'block', 
-    marginBottom: '0.5rem', 
-    fontWeight: '500'
-}
-const inputSty:React.CSSProperties={
-    width: '100%',
-    padding: '0.75rem',
-    border: '1px solid #ddd',
-    borderRadius: '4px',
-    fontSize: '1rem',
-    boxSizing: 'border-box',
-}
+

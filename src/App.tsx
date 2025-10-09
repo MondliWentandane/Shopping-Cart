@@ -9,6 +9,7 @@ import HomePage from './pages/HomePage';
 import CartPage from './pages/CartPage';
 import ProfilePage from './pages/ProfilePage';
 import './App.css';
+import Footer from './components/common/Footer';
 
 function App() {
   return (
@@ -23,26 +24,15 @@ function App() {
               <Route path="/register" element={<RegisterPage />} />
               
               {/* Protected routes */}
-              <Route path="/" element={
-                <ProtectedRoute>
-                  <HomePage />
-                </ProtectedRoute>
-              } />
-              <Route path="/cart" element={
-                <ProtectedRoute>
-                  <CartPage />
-                </ProtectedRoute>
-              } />
-              <Route path="/profile" element={
-                <ProtectedRoute>
-                  <ProfilePage />
-                </ProtectedRoute>
-              } />
+              <Route path="/" element={<ProtectedRoute><HomePage /></ProtectedRoute>} />
+              <Route path="/cart" element={<ProtectedRoute><CartPage /></ProtectedRoute>} />
+              <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
               
               {/* Redirect unknown routes to home */}
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </main>
+          <Footer />
         </div>
       </Router>
     </Provider>

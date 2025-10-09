@@ -37,9 +37,18 @@ const RegisterPage: React.FC =()=>{
     };
 
     return(
-        <div style={mainSty}>
-            <div style={formSty}>
-                <h2 style={{ textAlign: 'center', marginBottom: '2rem', color: '#333' }}>
+        <div id="div1Sty">
+            <div id="introDiv">
+                <h1>Customer-Focused</h1>
+                <h3>We make shopping simple and enjoyable</h3> <br />
+                <p>browse, add to your cart, and enjoy a <strong>seamless checkout experience....</strong> ,
+                    shop better — your <strong>personal</strong> cart
+                    tracker for everything you need. <strong>“No more guesswork"</strong> — add items, set prices, and watch your 
+                    total update instantly!”</p>
+
+            </div>
+            <div id="theForm">
+                <h2 style={{ textAlign: 'center', marginBottom: '1rem', color: '#ffffffff' }}>
                     Create Your Account
                 </h2>
                 {error && (
@@ -50,24 +59,24 @@ const RegisterPage: React.FC =()=>{
                 )}
                 <form onSubmit={handleSubmit}>
                     <div style={{ marginBottom: '1rem' }}>
-                        <label style={labelSty}>First Name</label>
-                        <input type="text" name="name" value={formData.name} onChange={handleChange} style={inputSty} required />
+                        <label id="lbl">First Name</label>
+                        <input id="inputs" type="text" name="name" value={formData.name} onChange={handleChange}  required />
                     </div>
                     <div style={{ marginBottom: '1rem' }}>
-                        <label style={labelSty}>Last Name</label>
-                        <input type="text" name="surname" value={formData.surname} onChange={handleChange} required style={inputSty} />
+                        <label id="lbl">Last Name</label>
+                        <input id="inputs" type="text" name="surname" value={formData.surname} onChange={handleChange} required  />
                     </div>
                     <div style={{ marginBottom: '1rem' }}>
-                        <label style={labelSty}>Email Address</label>
-                        <input type="email" name="email" value={formData.email} onChange={handleChange} required style={inputSty} />
+                        <label id="lbl">Email Address</label>
+                        <input id="inputs" type="email" name="email" value={formData.email} onChange={handleChange} required />
                     </div>
                     <div style={{ marginBottom: '1rem' }}>
-                        <label style={labelSty}>Cell Number</label>
-                        <input type="tel" name="cellNumber" value={formData.cellNumber} onChange={handleChange} required style={inputSty} />
+                        <label id="lbl">Cell Number</label>
+                        <input id="inputs" type="tel" name="cellNumber" value={formData.cellNumber} onChange={handleChange} required />
                     </div>
                     <div style={{ marginBottom: '1.5rem' }}>
-                        <label style={labelSty}>Password</label>
-                        <input type="password" name="password" value={formData.password} onChange={handleChange} required style={inputSty} />
+                        <label id="lbl">Password</label>
+                        <input id="inputs" type="password" name="password" value={formData.password} onChange={handleChange} required />
                     </div>
 
                     <button type="submit" disabled={isLoading} 
@@ -80,9 +89,9 @@ const RegisterPage: React.FC =()=>{
 
                 {isLoading && <LoadingSpinner size="small" />}
 
-                <p style={{ textAlign: 'center', color: '#666' }}>
+                <p style={{ textAlign: 'center', color: '#ffffffff' }}>
                 Already have an account?{' '}
-                <Link to="/login" style={{ color: '#3498db', textDecoration: 'none' }}>
+                <Link to="/login" style={{ color: '#07293fff', textDecoration: 'none' }}>
                     Login here
                 </Link>
                 </p>
@@ -94,32 +103,5 @@ const RegisterPage: React.FC =()=>{
 
 export default RegisterPage
 
-const mainSty:React.CSSProperties={
-      minHeight: '100vh',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      backgroundColor: '#f5f5f5',
-}
-const formSty:React.CSSProperties={
-        backgroundColor: 'white',
-        padding: '2rem',
-        borderRadius: '8px',
-        boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
-        width: '100%',
-        maxWidth: '400px',
-}
-const labelSty:React.CSSProperties={
-    display: 'block', 
-    marginBottom: '0.5rem', 
-    fontWeight: '500'
-}
-const inputSty: React.CSSProperties={
-    width: '100%',
-    padding: '0.75rem',
-    border: '1px solid #ddd',
-    borderRadius: '4px',
-    fontSize: '1rem',
-    boxSizing: 'border-box',
-}
+
 

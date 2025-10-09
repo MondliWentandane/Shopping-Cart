@@ -34,23 +34,11 @@ const CartPage: React.FC = () => {
   }
 
   return (
-    <div style={{ padding: '2rem', maxWidth: '1000px', margin: '0 auto' }}>
+    <div style={{ paddingTop: '4rem', maxWidth: '1000px', margin: '0 auto' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
         <h1 style={{ color: '#333' }}>My Shopping Cart</h1>
         {!showAddForm && (
-          <button
-            onClick={() => setShowAddForm(true)}
-            style={{
-              padding: '0.75rem 1.5rem',
-              backgroundColor: '#27ae60',
-              color: 'white',
-              border: 'none',
-              borderRadius: '6px',
-              cursor: 'pointer',
-              fontSize: '1rem',
-              fontWeight: '500',
-            }}
-          >
+          <button onClick={() => setShowAddForm(true)} id='addBtn'>
             + Add New Item
           </button>
         )}
@@ -98,33 +86,23 @@ const CartPage: React.FC = () => {
               <CartItem key={item.id} item={item} />
             ))}
           </div>
-
-          {/* Cart Summary */}
           {items.length > 0 && (
-            <div style={{
-              backgroundColor: 'white',
-              padding: '1.5rem',
-              borderRadius: '8px',
-              boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-              border: '2px solid #3498db',
-            }}>
-              <h3 style={{ color: '#333', marginBottom: '1rem' }}>Cart Summary</h3>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                <span>Total Items:</span>
-                <strong>{totalItems}</strong>
+            <div id='forSummary'>
+              <h3 style={{marginBottom: '1rem' }}>Cart Summary <hr /></h3>
+              <div style={{ display: 'flex',  marginBottom: '0.5rem' }}>
+                <span>Total Items: <strong>{totalItems}</strong></span>
               </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-                <span>Unique Products:</span>
-                <strong>{items.length}</strong>
+              <div style={{ display: 'flex',  marginBottom: '0.5rem' }}>
+                <span>Unique Products: <strong>{items.length}</strong></span>
               </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
-                <span>Total Value:</span>
-                <strong style={{ fontSize: '1.25rem', color: '#27ae60' }}>
-                  ${totalValue.toFixed(2)}
-                </strong>
+              <div style={{ display: 'flex', marginBottom: '1rem' }}>
+                <span>Total Value: <strong style={{ fontSize: '1.25rem', color: '#27ae60' }}>
+                  R {totalValue.toFixed(2)}
+                </strong></span>
               </div>
             </div>
           )}
+          <br />
         </>
       )}
     </div>

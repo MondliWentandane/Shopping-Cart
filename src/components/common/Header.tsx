@@ -17,26 +17,33 @@ const Header:React.FC = () =>{
     }
 
     if(!user){
-        return null;
+        return (
+        <header style={headerStyl}>
+            <div style={divOneSty}>
+                <div style={DivNavLinkSty}>
+                    <Link to="/" style={LinksSty}> Shopping Cart</Link>
+                </div>
+            </div>
+        </header>
+        )
     }
     
     return(
         <header style={headerStyl}>
             <div style={divOneSty}>
-                <div style={DivNavLinkSty}>
-                    <Link to="/" style={LinksSty}> ShopApp</Link>
-                    <nav style={{ display: 'flex', gap: '1rem' }}>
-                        <Link to="/" style={{ color: 'white', textDecoration: 'none' }}>Home</Link>
-                        <Link to="/cart" style={{ color: 'white', textDecoration: 'none' }}>
-                           Cart {items.length}
-                        </Link>
-                        <Link to="/profile" style={{ color: 'white', textDecoration: 'none' }}>Profile</Link>
-                    </nav>
-                </div>
-
+              <Link to="/" style={LinksSty}> ShopApp</Link>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                    <span>Welcome, {user.name}</span>
-                    <button onClick={handleLogout} style={BtnSty}> Logout</button>
+                    <div style={DivNavLinkSty}>
+                        <nav style={{ display: 'flex', gap: '1rem' }}>
+                            <Link to="/" id="btns">Home</Link>
+                            <Link to="/cart" id="btns">
+                            Cart {items.length}
+                            </Link>
+                            <Link to="/profile" id="btns">Profile</Link>
+                        </nav>
+                    </div>
+                    <button onClick={handleLogout} id="logout"> Logout</button>
+                    <span>{user.name} {user.surname}</span>
                 </div>
             </div>
         </header>
@@ -46,18 +53,18 @@ const Header:React.FC = () =>{
 export default Header;
 
 const headerStyl:React.CSSProperties={
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    maxWidth: '1200px',
-    margin: '0 auto',
+    width: "100%",
+    height: "7%",
+    backgroundColor: 'rgba(11, 31, 245, 0.66)',
+    position: "absolute"
 }
 const divOneSty:React.CSSProperties={
-    display: 'flex',
+        display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        maxWidth: '1200px',
-        margin: '0 auto',
+        marginTop: "0.4rem",
+        marginLeft: "0.7rem",
+        width: "97%"
 }
 const DivNavLinkSty:React.CSSProperties={
     display: 'flex',
@@ -69,12 +76,4 @@ const LinksSty:React.CSSProperties={
     textDecoration: 'none', 
     fontSize: '1.5rem', 
     fontWeight: 'bold'
-}
-const BtnSty:React.CSSProperties={
-    padding: '0.5rem 1rem',
-    backgroundColor: '#e74c3c',
-    color: 'white',
-    border: 'none',
-    borderRadius: '4px',
-    cursor: 'pointer',    
 }
