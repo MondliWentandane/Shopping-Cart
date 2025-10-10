@@ -54,9 +54,10 @@ export default Header;
 
 const headerStyl:React.CSSProperties={
     width: "100%",
-    height: "7%",
     backgroundColor: 'rgba(11, 31, 245, 0.66)',
-    position: "absolute"
+    position: "static",
+    flex: 6
+
 }
 const divOneSty:React.CSSProperties={
         display: 'flex',
@@ -64,7 +65,8 @@ const divOneSty:React.CSSProperties={
         alignItems: 'center',
         marginTop: "0.4rem",
         marginLeft: "0.7rem",
-        width: "97%"
+        width: "97%",
+        height: "3.2rem"
 }
 const DivNavLinkSty:React.CSSProperties={
     display: 'flex',

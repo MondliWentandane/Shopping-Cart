@@ -49,22 +49,11 @@ const ProfilePage: React.FC = () => {
   const totalCartValue = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
   return (
-    <div style={{ padding: '2rem', maxWidth: '800px', margin: '0 auto' }}>
+    <div id='mainP'>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
         <h1 style={{ color: '#333' }}>My Profile</h1>
         {!isEditing && (
-          <button
-            onClick={() => setIsEditing(true)}
-            style={{
-              padding: '0.75rem 1.5rem',
-              backgroundColor: '#3498db',
-              color: 'white',
-              border: 'none',
-              borderRadius: '6px',
-              cursor: 'pointer',
-              fontSize: '1rem',
-            }}
-          >
+          <button onClick={() => setIsEditing(true)}id='editBtnP'>
             Edit Profile
           </button>
         )}

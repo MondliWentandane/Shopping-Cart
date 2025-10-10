@@ -27,7 +27,7 @@ const HomePage: React.FC=()=>{
 
     return(
         <div style={{ paddingTop: '4rem',width: "97%", margin: '0 auto' }}>
-            <div style={{ marginBottom: '2rem', color: '#120fe4ff' }}>
+            <div style={{ marginBottom: '2rem', color: '#4b49e2ff' }}>
                 <h1>Welcome back, {user?.name}!</h1>
                 <p style={{  fontSize: '1.1rem' }}>
                   Manage your shopping cart and tract your items
