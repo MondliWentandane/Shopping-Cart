@@ -2,9 +2,9 @@
 
 ======= Running the Application =========
 
-Start JSON Server: npm run json-server
+Termnal 1: Start JSON Server: npx json-server --watch db.json --port 3001
 
-Start Development Server: npm run dev
+Terminal 2: Start Development Server: npm run dev
 
 ================================================= What I've Built =======================================
 ====== Complete Authentication System
